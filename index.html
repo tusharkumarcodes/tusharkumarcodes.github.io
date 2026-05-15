@@ -134,7 +134,7 @@
             text-align: justify;
         }
 
-        /* Skills Grid */
+        /* Skills Grid - Solid Blocks with Left Border */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -164,7 +164,7 @@
             transition: color 0.3s ease;
         }
 
-        /* Symmetrical Tech Toolkit Grid */
+        /* Tech Toolkit Grid - Transparent with Underlined Titles */
         .tech-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -173,20 +173,19 @@
         }
 
         .tech-group {
-            background: var(--bg-color);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary-color);
+            background: transparent;
+            padding: 10px 0;
             display: flex;
             flex-direction: column;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .tech-group h4 {
             margin: 0 0 15px 0;
             color: var(--primary-color);
             font-size: 1.1em;
-            transition: color 0.3s ease;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .tech-tags {
@@ -214,6 +213,7 @@
             color: var(--btn-text-color);
             border-color: var(--secondary-color);
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow-color);
         }
 
         /* Experience Section */
