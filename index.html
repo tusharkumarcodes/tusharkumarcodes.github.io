@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tushar Kumar - Technical Project Manager</title>
     <style>
+        /* CSS Variables for Light Mode */
         :root {
             --primary-color: #1a365d;
             --secondary-color: #2b6cb0;
@@ -12,6 +13,22 @@
             --text-main: #2d3748;
             --text-muted: #718096;
             --bg-color: #f7fafc;
+            --container-bg: #ffffff;
+            --shadow-color: rgba(0,0,0,0.05);
+            --table-header-bg: #f7fafc;
+        }
+
+        /* CSS Variables for Dark Mode */
+        [data-theme="dark"] {
+            --primary-color: #e2e8f0;
+            --secondary-color: #63b3ed;
+            --accent-color: #4a5568;
+            --text-main: #edf2f7;
+            --text-muted: #a0aec0;
+            --bg-color: #1a202c;
+            --container-bg: #2d3748;
+            --shadow-color: rgba(0,0,0,0.3);
+            --table-header-bg: #1a202c;
         }
         
         body {
@@ -21,15 +38,45 @@
             background-color: var(--bg-color);
             margin: 0;
             padding: 40px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .resume-wrapper {
             max-width: 950px;
             margin: 0 auto;
-            background: #ffffff;
+            background: var(--container-bg);
             padding: 50px 60px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px var(--shadow-color);
+            position: relative;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Theme Toggle Button Styles */
+        .theme-toggle {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: none;
+            border: 2px solid var(--accent-color);
+            border-radius: 30px;
+            padding: 8px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent-color);
+        }
+
+        .theme-icon {
+            font-size: 1.2em;
         }
 
         header {
@@ -37,6 +84,7 @@
             padding-bottom: 25px;
             margin-bottom: 35px;
             text-align: center;
+            margin-top: 20px; /* Added space for the toggle button */
         }
 
         h1 {
@@ -44,6 +92,7 @@
             font-size: 2.8em;
             letter-spacing: -0.5px;
             margin: 0 0 10px 0;
+            transition: color 0.3s ease;
         }
 
         .title {
@@ -53,6 +102,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin: 0;
+            transition: color 0.3s ease;
         }
 
         h2 {
@@ -64,6 +114,7 @@
             font-size: 1.6em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         p.summary {
@@ -85,18 +136,21 @@
             padding: 20px;
             border-radius: 8px;
             border-left: 4px solid var(--secondary-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .skill-category h4 {
             margin: 0 0 10px 0;
             color: var(--primary-color);
             font-size: 1.1em;
+            transition: color 0.3s ease;
         }
 
         .skill-category p {
             margin: 0;
             font-size: 0.95em;
             color: var(--text-muted);
+            transition: color 0.3s ease;
         }
 
         .experience-item {
@@ -116,12 +170,14 @@
             color: var(--primary-color);
             margin: 0 0 5px 0;
             font-size: 1.3em;
+            transition: color 0.3s ease;
         }
 
         .job-company {
             color: var(--secondary-color);
             font-weight: 600;
             font-size: 1.1em;
+            transition: color 0.3s ease;
         }
 
         .job-meta {
@@ -129,6 +185,7 @@
             font-size: 0.95em;
             color: var(--text-muted);
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .job-meta span {
@@ -155,12 +212,14 @@
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid var(--accent-color);
+            transition: border-color 0.3s ease;
         }
 
         .cert-table th {
             color: var(--primary-color);
             font-weight: 600;
-            background-color: var(--bg-color);
+            background-color: var(--table-header-bg);
+            transition: color 0.3s ease, background-color 0.3s ease;
         }
 
         .cert-table td:first-child {
@@ -179,12 +238,25 @@
             .job-meta {
                 text-align: left;
             }
+            .theme-toggle {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 20px auto;
+                width: fit-content;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="resume-wrapper">
+        
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+            <span class="theme-icon" id="theme-icon">🌓</span>
+            <span id="theme-text">Toggle Theme</span>
+        </button>
+
         <header>
             <h1>Tushar Kumar</h1>
             <p class="title">Technical Project Manager</p>
@@ -352,5 +424,38 @@
 
     </div>
 
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+        
+        // Check for saved user preference, if any, on load of the website
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            }
+        }
+
+        toggleBtn.addEventListener('click', function() {
+            let theme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = 'light';
+            
+            if (theme === 'light') {
+                targetTheme = 'dark';
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            } else {
+                targetTheme = 'light';
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Mode';
+            }
+
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+        });
+    </script>
 </body>
 </html>
