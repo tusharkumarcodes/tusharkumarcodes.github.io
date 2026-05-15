@@ -8,30 +8,30 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
 
     <style>
-        /* CSS Variables for Light Mode */
+        /* CSS Variables for Light Mode - High Visibility/Contrast */
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2b6cb0;
-            --accent-color: #e2e8f0;
-            --text-main: #2d3748;
-            --text-muted: #718096;
-            --bg-color: #f7fafc;
-            --container-bg: #ffffff;
-            --shadow-color: rgba(0,0,0,0.05);
-            --table-header-bg: #f7fafc;
+            --primary-color: #0f172a; /* Near-black slate for headings */
+            --secondary-color: #2563eb; /* Vibrant, punchy royal blue */
+            --accent-color: #cbd5e1; /* Stronger gray for borders/dividers */
+            --text-main: #1e293b; /* Very dark gray for main text readability */
+            --text-muted: #475569; /* Darkened muted text so dates don't wash out */
+            --bg-color: #f1f5f9; /* Richer light background */
+            --container-bg: #ffffff; /* Pure white container */
+            --shadow-color: rgba(0,0,0,0.08); /* Slightly stronger shadow */
+            --table-header-bg: #f8fafc;
         }
 
         /* CSS Variables for Dark Mode */
         [data-theme="dark"] {
-            --primary-color: #e2e8f0;
-            --secondary-color: #63b3ed;
-            --accent-color: #4a5568;
-            --text-main: #edf2f7;
-            --text-muted: #a0aec0;
-            --bg-color: #1a202c;
-            --container-bg: #2d3748;
-            --shadow-color: rgba(0,0,0,0.3);
-            --table-header-bg: #1a202c;
+            --primary-color: #f8fafc;
+            --secondary-color: #60a5fa;
+            --accent-color: #334155;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --bg-color: #020617;
+            --container-bg: #0f172a;
+            --shadow-color: rgba(0,0,0,0.5);
+            --table-header-bg: #020617;
         }
         
         body {
@@ -76,6 +76,7 @@
 
         .theme-toggle:hover {
             background-color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         .theme-icon {
