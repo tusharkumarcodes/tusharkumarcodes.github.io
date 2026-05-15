@@ -13,6 +13,7 @@
             --primary-color: #0f172a; 
             --secondary-color: #2563eb; 
             --accent-color: #cbd5e1; 
+            --tag-bg: #e2e8f0;
             --text-main: #1e293b; 
             --text-muted: #475569; 
             --bg-color: #f1f5f9; 
@@ -28,6 +29,7 @@
             --primary-color: #f8fafc;
             --secondary-color: #60a5fa;
             --accent-color: #334155;
+            --tag-bg: #1e293b;
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
             --bg-color: #020617;
@@ -113,28 +115,6 @@
             transition: color 0.3s ease;
         }
 
-        /* Contact Button Styles */
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--secondary-color);
-            color: var(--btn-text-color);
-            text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1.05em;
-            box-shadow: 0 4px 6px var(--shadow-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px var(--shadow-color);
-            filter: brightness(1.1);
-        }
-
         h2 {
             color: var(--primary-color);
             border-bottom: 2px solid var(--accent-color);
@@ -154,6 +134,7 @@
             text-align: justify;
         }
 
+        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -183,6 +164,47 @@
             transition: color 0.3s ease;
         }
 
+        /* Tech Toolkit Tags */
+        .tech-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tech-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-group h4 {
+            width: 100%;
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+            font-size: 1.05em;
+        }
+
+        .tech-tag {
+            background-color: var(--tag-bg);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid var(--accent-color);
+            transition: all 0.2s ease;
+        }
+
+        .tech-tag:hover {
+            background-color: var(--secondary-color);
+            color: var(--btn-text-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
         .experience-item {
             margin-bottom: 35px;
         }
@@ -232,6 +254,7 @@
             line-height: 1.7;
         }
 
+        /* Certifications Table */
         .cert-table {
             width: 100%;
             border-collapse: collapse;
@@ -257,7 +280,7 @@
             color: var(--text-main);
         }
 
-        /* Dedicated Contact Section Styles */
+        /* Contact Section */
         .contact-section {
             background-color: var(--table-header-bg);
             padding: 40px;
@@ -315,6 +338,27 @@
 
         .cta-container {
             margin-top: 20px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--secondary-color);
+            color: var(--btn-text-color);
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.2em;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px var(--shadow-color);
+            filter: brightness(1.1);
         }
 
         @media (max-width: 768px) {
@@ -376,6 +420,40 @@
                 <div class="skill-category">
                     <h4>Strategy & Leadership</h4>
                     <p>Digital Business Transformation, Vendor Management, Risk Mitigation, Pre-sales Architecture.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Environment & Toolkit</h2>
+            <div class="tech-container">
+                <div class="tech-group">
+                    <h4>Languages & Backend</h4>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Express.js</span>
+                </div>
+                <div class="tech-group">
+                    <h4>Frontend & Database</h4>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">HTML5 / CSS3</span>
+                    <span class="tech-tag">RESTful APIs</span>
+                </div>
+                <div class="tech-group">
+                    <h4>AI & Advanced Tech</h4>
+                    <span class="tech-tag">Artificial Intelligence</span>
+                    <span class="tech-tag">Generative AI</span>
+                    <span class="tech-tag">Prompt Engineering</span>
+                    <span class="tech-tag">Data Analytics</span>
+                </div>
+                <div class="tech-group">
+                    <h4>Project Management</h4>
+                    <span class="tech-tag">Jira</span>
+                    <span class="tech-tag">Confluence</span>
+                    <span class="tech-tag">Agile Boards</span>
+                    <span class="tech-tag">Vendor Platforms</span>
                 </div>
             </div>
         </section>
@@ -549,7 +627,7 @@
             </div>
 
             <div class="cta-container">
-                <a href="mailto:tusharkumar.mohali@gmail.com" class="contact-btn" style="font-size: 1.2em; padding: 15px 35px;">
+                <a href="mailto:tusharkumar.mohali@gmail.com" class="contact-btn">
                     ✉️ Contact Me
                 </a>
             </div>
