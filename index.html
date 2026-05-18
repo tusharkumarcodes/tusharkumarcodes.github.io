@@ -49,13 +49,28 @@
             margin-bottom: 40px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center; /* Changed to center to align nicely with the image */
             flex-wrap: wrap;
             gap: 20px;
         }
 
+        /* New Profile Image Styles */
+        .header-profile-img {
+            flex-shrink: 0;
+        }
+
+        .header-profile-img img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bcg-green);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
         .header-left {
             flex: 1;
+            margin-left: 20px; /* Added spacing between image and text */
         }
 
         h1 {
@@ -360,6 +375,21 @@
             .resume-wrapper {
                 padding: 40px 30px;
             }
+            
+            /* Center the header content on mobile */
+            header {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+            .header-left {
+                margin-left: 0;
+            }
+            .header-right {
+                text-align: center;
+                margin-top: 10px;
+            }
+
             h1 {
                 font-size: 2.5em;
             }
@@ -389,10 +419,6 @@
             .contact-section {
                 padding: 40px 25px;
             }
-            .header-right {
-                text-align: left;
-                margin-top: 10px;
-            }
         }
     </style>
 </head>
@@ -401,6 +427,9 @@
     <div class="resume-wrapper">
 
         <header>
+            <div class="header-profile-img">
+                <img src="IMG_1701.jpg" alt="Tushar Kumar Profile Picture">
+            </div>
             <div class="header-left">
                 <h1>Tushar Kumar</h1>
                 <p class="title">Technical Project Manager</p>
